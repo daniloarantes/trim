@@ -1,4 +1,13 @@
 #!/bin/bash
+# Script utilizado para rodar o TRIM.
+# Coloco este script dentro de /etc/cron.daily
+# desta forma o script é rodado todos os dias em que a máquina está ligada
+
+# Variável com o arquivo de log
 LOG=/var/log/trim.log
+
+# Escrever a data em que o script rodou no final do log
 echo "*** $(date -R) ***" >> $LOG
+
+# Executando o TRIM apenas para o / (substitua para a partição que está no SSD)
 fstrim -v / >> $LOG
